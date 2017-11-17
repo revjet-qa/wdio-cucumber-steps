@@ -1,0 +1,39 @@
+{
+  "name": "wdio-cucumber-steps",
+  "version": "0.0.1",
+  "description": "Cucumber step definitions written with WebdriverIO",
+  "main": "index.js",
+  "engines": {
+    "node": ">=6.9.x"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/revjet-qa/wdio-cucumber-steps.git"
+  },
+  "keywords": [
+    "cucumber",
+    "cucumber steps",
+    "step definitions",
+    "automated tests",
+    "e2e tests",
+    "end-to-end tests",
+    "webdriver",
+    "selenium",
+    "webdriverio",
+    "wdio",
+    "cucumber",
+    "gherkin",
+    "bdd"
+  ],
+  "author": "Alex Krechik, Dmytro Shpakovskyi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/revjet-qa/wdio-cucumber-steps/issues"
+  },
+  "devDependencies": {
+    "webdriverio": "^4.9.8"
+  }
+}
