@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 exports.config = {
     
     //
@@ -130,9 +132,7 @@ exports.config = {
     cucumberOpts: {
         // <string[]> (file/dir) require files before executing features
         require: [
-            './src/steps/given.js',
-            './src/steps/when.js',
-            './src/steps/then.js'
+            './test/steps/import.steps.js'
         ],
         backtrace: false,   // <boolean> show full backtrace for errors
         compiler: [],       // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
