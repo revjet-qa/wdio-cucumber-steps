@@ -7,7 +7,7 @@
     "node": ">=6.9.x"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/wdio test/wdio.conf.js"
   },
   "repository": {
     "type": "git",
@@ -34,6 +34,10 @@
     "url": "https://github.com/revjet-qa/wdio-cucumber-steps/issues"
   },
   "devDependencies": {
+    "chai": "^4.1.2",
+    "wdio-cucumber-framework": "^1.0.2",
+    "wdio-selenium-standalone-service": "0.0.9",
+    "wdio-spec-reporter": "^0.1.2",
     "webdriverio": "^4.9.8"
   }
 }
