@@ -3,15 +3,19 @@
 'use strict'
 
 const { defineSupportCode } = require('cucumber');
+const { dictionaryObject, getDictionaryObject } = require('../helpers/objects.processor')
+const { _r } = require('../helpers/utils')
 
 module.exports = function () {
     defineSupportCode(({ Given }) => {
 
-        Given(/^I open "([^"]*)?"$/, (url) => {
+        Given(_r(`^I open ${dictionaryObject}$`), (urlDictionary) => {
             /**
              * The URL to navigate to
-             * @type {String}
+             * @type {String} or {DictionaryObject}
              */
+            const url = getDictionaryObject.call(this, urlDictionary)
+
             browser.url(url);
         });
 
