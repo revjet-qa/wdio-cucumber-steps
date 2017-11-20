@@ -7,9 +7,10 @@
     "node": ">=6.9.x"
   },
   "scripts": {
-    "lint": "./node_modules/eslint/bin/eslint.js -c .eslintrc.js src/ test/",    
+    "lint": "./node_modules/eslint/bin/eslint.js -c .eslintrc.js src/ test/",
+    "mocha": "./node_modules/.bin/mocha test/mocha/*.spec.js",
     "cucumber": "./node_modules/.bin/wdio test/wdio.conf.js",
-    "test": "npm run lint && npm run cucumber"    
+    "test": "npm run lint && npm run mocha && npm run cucumber"
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,7 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "eslint": "^4.11.0",
+    "mocha": "^4.0.1",
     "wdio-cucumber-framework": "^1.0.2",
     "wdio-selenium-standalone-service": "0.0.9",
     "wdio-spec-reporter": "^0.1.2",
