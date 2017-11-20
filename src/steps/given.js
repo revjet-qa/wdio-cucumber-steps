@@ -1,13 +1,19 @@
+/* eslint no-undef: 0 */
+
+'use strict'
+
 const { defineSupportCode } = require('cucumber');
 
-defineSupportCode(({ Given }) => {
+module.exports = function () {
+    defineSupportCode(({ Given }) => {
 
-    Given(/^I open "([^"]*)?"$/, (url) => {
-        /**
-         * The URL to navigate to
-         * @type {String}
-         */
-        browser.url(url);
+        Given(/^I open "([^"]*)?"$/, (url) => {
+            /**
+             * The URL to navigate to
+             * @type {String}
+             */
+            browser.url(url);
+        });
+
     });
-
-});
+}
