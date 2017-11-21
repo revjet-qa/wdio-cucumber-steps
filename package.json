@@ -7,7 +7,7 @@
     "node": ">=6.9.x"
   },
   "scripts": {
-    "lint": "./node_modules/eslint/bin/eslint.js -c .eslintrc.js src/ test/",
+    "lint": "./node_modules/eslint/bin/eslint.js -c .eslintrc.json src/ test/",
     "mocha": "./node_modules/.bin/mocha test/mocha/*.spec.js",
     "cucumber": "./node_modules/.bin/wdio test/wdio.conf.js",
     "test": "npm run lint && npm run mocha && npm run cucumber"
