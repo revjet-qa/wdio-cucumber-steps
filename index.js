@@ -1,8 +1,6 @@
 'use strict'
 
 const fs = require('fs');
-
-// Todo - some filters could be added here
 const files = fs.readdirSync('./src/steps');
 
 files.forEach((f) => {
