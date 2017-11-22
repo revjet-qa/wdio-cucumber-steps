@@ -6,5 +6,6 @@ Feature: URL
   As a developer
   I want to open URL and check that is a certain value
 
-  Scenario: The URL should be https://github.com/
-    Given I open "https://github.com/"
+  Scenario: Check I write method
+    Given I open "http://localhost:9000"
+    Then "main"."txtHeader" should be present
