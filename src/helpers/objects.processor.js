@@ -1,6 +1,7 @@
 'use strict'
 
 /* eslint no-param-reassign: 0*/
+/* eslint no-undef: 0 */
 
 const { _r } = require('./utils')
 
@@ -54,20 +55,20 @@ function parsePageObject(str) {
         const page = match[1]
         const object = match[2]
 
-        if (!this.pages[page]) {
+        if (!pages[page]) {
             throw new Error(`"${page}" page is missing`)
         }
-        if (!this.pages[page][object]) {
+        if (!pages[page][object]) {
             throw new Error(`"${object}" page object is missing for the "${page}" page`)
         }
-        return this.pages[page][object]
+        return pages[page][object]
     }
     throw new Error(`Unknown Page Object type for "${str}"`)
 }
 
 function getPageObject(str) {
     const value = parsePageObject.call(this, str)
-    const idValue = value.replace(_r(regDynamicId, 'g'), this.id)
+    const idValue = value.replace(_r(regDynamicId, 'g'), id.getId())
     const injection = 'not(ancestor-or-self::*[contains(@style,"visibility: hidden;") ' +
     'or contains(@style,"display: none;") or contains(@class,"x-hide-offsets")])';
     const injectedvalue = injectInto(idValue, injection)
@@ -85,13 +86,13 @@ function parseDictionaryObject(str) {
         const dictionary = match[1]
         const object = match[2]
 
-        if (!this.pages[dictionary]) {
+        if (!pages[dictionary]) {
             throw new Error(`"${dictionary}" page is missing`)
         }
-        if (!this.pages[dictionary][object]) {
+        if (!pages[dictionary][object]) {
             throw new Error(`"${object}" page object is missing for the "${dictionary}" page`)
         }
-        return this.pages[dictionary][object]
+        return pages[dictionary][object]
     }
     if (match[3] !== undefined) {
         return match[3]
@@ -101,7 +102,7 @@ function parseDictionaryObject(str) {
 
 function getDictionaryObject(str) {
     const value = parseDictionaryObject.call(this, str)
-    const idValue = value.replace(_r(regDynamicId, 'g'), this.id)
+    const idValue = value.replace(_r(regDynamicId, 'g'), id.getId())
 
     return idValue
 }

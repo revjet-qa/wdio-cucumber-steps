@@ -14,16 +14,17 @@ const { _r } = require('../../src/helpers/utils')
 
 const realId = 12345
 
-const World = {
-    id: realId,
-    pages: {
-        page: {
-            object: `//div[@id='${dynamicId}']`
-        },
-        dictionary: {
-            object: `dictionaryObject${dynamicId}`
-        }
+global.pages = {
+    page: {
+        object: `//div[@id='${dynamicId}']`
+    },
+    dictionary: {
+        object: `dictionaryObject${dynamicId}`
     }
+}
+
+global.id = {
+    getId: () => realId
 }
 
 describe('injectInto', () => {
@@ -59,7 +60,7 @@ describe('getPageObject', () => {
 
             expect(match).to.be.an('array')
             const strPageObject = match[1]
-            const pageObjectVal = getPageObject.call(World, strPageObject)
+            const pageObjectVal = getPageObject(strPageObject)
 
             expect(pageObjectVal).to.be.equals(result)
             next()
@@ -89,7 +90,7 @@ describe('getDictionaryObject', () => {
 
             expect(match).to.be.an('array')
             const strDictionaryObject = match[1]
-            const dictionaryObjectVal = getDictionaryObject.call(World, strDictionaryObject)
+            const dictionaryObjectVal = getDictionaryObject(strDictionaryObject)
 
             expect(dictionaryObjectVal).to.be.equals(result)
             next()
