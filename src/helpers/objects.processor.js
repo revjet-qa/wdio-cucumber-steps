@@ -9,11 +9,11 @@ const dynamicId = '$dynamicId$'
 const regDynamicId = '\\$dynamicId\\$'
 
 // Can come from applysteps ??
-const pageObject = '("[^"]+"\."[^"]+")'
-const pageObjectsParts = '^"([^"]+)"\."([^"]+)"$'
+const pageObject = '([a-zA-Z0-9_-]+ from [a-zA-Z0-9_-]+ page)'
+const pageObjectsParts = '^([a-zA-Z0-9_-]+) from ([a-zA-Z0-9_-]+) page$'
 
-const dictionaryObject = '("[^"]+"\."[^"]+"|"[^"]*")'
-const dictionaryObjectsParts = '^(?:"([^"]+)"\."([^"]+)"|"([^"]*)")$'
+const dictionaryObject = '([a-zA-Z0-9_-]+ from [a-zA-Z0-9_-]+ dictionary|"[^"]*")'
+const dictionaryObjectsParts = '^(?:([a-zA-Z0-9_-]+) from ([a-zA-Z0-9_-]+) dictionary|"([^"]*)")$'
 
 // Todo do we need this in csp-qa
 function injectInto(locator, injection) {
@@ -45,15 +45,15 @@ function injectInto(locator, injection) {
     }
 }
 
-function parsePageObject(str) {
+function pageObjectGetter(str) {
     const match = _r(pageObjectsParts).exec(str)
 
     if (!match) {
         throw new Error(`Was unable to find Page Object for "${str}"`)
     }
     if (match[1]) {
-        const page = match[1]
-        const object = match[2]
+        const page = match[2]
+        const object = match[1]
 
         if (!pages[page]) {
             throw new Error(`"${page}" page is missing`)
@@ -67,7 +67,8 @@ function parsePageObject(str) {
 }
 
 function getPageObject(str) {
-    const value = parsePageObject.call(this, str)
+    const pageObjectGetterFunc = objectsProcessor.pageObjectGetter || pageObjectGetter
+    const value = pageObjectGetterFunc(str)
     const idValue = value.replace(_r(regDynamicId, 'g'), id.getId())
     const injection = 'not(ancestor-or-self::*[contains(@style,"visibility: hidden;") ' +
     'or contains(@style,"display: none;") or contains(@class,"x-hide-offsets")])';
@@ -76,15 +77,15 @@ function getPageObject(str) {
     return injectedvalue
 }
 
-function parseDictionaryObject(str) {
+function dicionaryGetter(str) {
     const match = _r(dictionaryObjectsParts).exec(str)
 
     if (!match) {
         throw new Error(`Was unable to find Dictionary Object type for  "${str}"`)
     }
     if (match[1]) {
-        const dictionary = match[1]
-        const object = match[2]
+        const dictionary = match[2]
+        const object = match[1]
 
         if (!pages[dictionary]) {
             throw new Error(`"${dictionary}" page is missing`)
@@ -101,7 +102,8 @@ function parseDictionaryObject(str) {
 }
 
 function getDictionaryObject(str) {
-    const value = parseDictionaryObject.call(this, str)
+    const dicionaryGetterFunc = objectsProcessor.dicionaryGetter || dicionaryGetter
+    const value = dicionaryGetterFunc(str)
     const idValue = value.replace(_r(regDynamicId, 'g'), id.getId())
 
     return idValue

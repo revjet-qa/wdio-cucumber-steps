@@ -199,6 +199,8 @@ exports.config = {
             getId: () => this.value
         }
 
+        global.objectsProcessor = { }
+
     },
     /**
      * Runs before a WebdriverIO command gets executed.

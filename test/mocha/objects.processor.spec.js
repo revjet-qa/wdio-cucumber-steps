@@ -15,17 +15,19 @@ const { _r } = require('../../src/helpers/utils')
 const realId = 12345
 
 global.pages = {
-    page: {
+    main: {
         object: `//div[@id='${dynamicId}']`
     },
-    dictionary: {
-        object: `dictionaryObject${dynamicId}`
+    book: {
+        word: `dictionaryObject${dynamicId}`
     }
 }
 
 global.id = {
     getId: () => realId
 }
+
+global.objectsProcessor = { }
 
 describe('injectInto', () => {
     const data = [
@@ -45,7 +47,7 @@ describe('injectInto', () => {
 describe('getPageObject', () => {
     const data = [
         {
-            step: 'When I click "page"."object"',
+            step: 'When I click object from main page',
             regExp: _r(`When I click ${pageObject}`),
             result: `//div[@id='${realId}' and not(ancestor-or-self::*[contains(@style,"visibility: hidden;") ` +
                 'or contains(@style,"display: none;") or contains(@class,"x-hide-offsets")])]'
@@ -71,7 +73,7 @@ describe('getPageObject', () => {
 describe('getDictionaryObject', () => {
     const data = [
         {
-            step: 'When I write "dictionary"."object"',
+            step: 'When I write word from book dictionary',
             regExp: _r(`When I write ${dictionaryObject}`),
             result: `dictionaryObject${realId}`
         },

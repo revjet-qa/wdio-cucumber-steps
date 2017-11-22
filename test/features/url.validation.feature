@@ -8,4 +8,4 @@ Feature: URL
 
   Scenario: Check I write method
     Given I open "http://localhost:9000"
-    Then "main"."txtHeader" should be present
+    Then txtHeader from main page should be present
