@@ -132,7 +132,7 @@ exports.config = {
     cucumberOpts: {
         // <string[]> (file/dir) require files before executing features
         require: [
-            './test/steps/import.steps.js'
+            './index.js'
         ],
         backtrace: false,   // <boolean> show full backtrace for errors
         compiler: [],       // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
