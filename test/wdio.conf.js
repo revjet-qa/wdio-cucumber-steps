@@ -188,6 +188,17 @@ exports.config = {
         global.expect = chai.expect;
         global.assert = chai.assert;
         global.should = chai.should();
+
+        global.pages = {
+            main: require('./features/page_objects/main')
+        }
+
+        global.id = {
+            value: '',
+            regenerate: () => this.value === (new Date()).getTime(),
+            getId: () => this.value
+        }
+
     },
     /**
      * Runs before a WebdriverIO command gets executed.
