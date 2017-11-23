@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 let e = {}
 
-e.txtHeader = '//*[@id="header"]';
+e.txtHeader = '//*[@id="header"]'
 
 module.exports = e

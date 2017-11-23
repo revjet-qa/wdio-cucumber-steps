@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 const { expect } = require('chai')
 
@@ -39,18 +39,18 @@ describe('injectInto', () => {
 
     data.forEach((d) => {
         it(`should get "${d.result}" string from "${d.locator}" and "${d.injection}" injection`, () => {
-            expect(injectInto(d.locator, d.injection)).to.be.equals(d.result);
-        });
-    });
-});
+            expect(injectInto(d.locator, d.injection)).to.be.equals(d.result)
+        })
+    })
+})
 
 describe('getPageObject', () => {
     const data = [
         {
             step: 'When I click object from main page',
             regExp: _r(`When I click ${pageObject}`),
-            result: `//div[@id='${realId}' and not(ancestor-or-self::*[contains(@style,"visibility: hidden;") ` +
-                'or contains(@style,"display: none;") or contains(@class,"x-hide-offsets")])]'
+            result: `//div[@id='${realId}' and not(ancestor-or-self::*[contains(@style,"visibility: hidden") ` +
+                'or contains(@style,"display: none") or contains(@class,"x-hide-offsets")])]'
         }
     ]
 
@@ -66,9 +66,9 @@ describe('getPageObject', () => {
 
             expect(pageObjectVal).to.be.equals(result)
             next()
-        });
-    });
-});
+        })
+    })
+})
 
 describe('getDictionaryObject', () => {
     const data = [
@@ -96,6 +96,6 @@ describe('getDictionaryObject', () => {
 
             expect(dictionaryObjectVal).to.be.equals(result)
             next()
-        });
-    });
-});
+        })
+    })
+})
