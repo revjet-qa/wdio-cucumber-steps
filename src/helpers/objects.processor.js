@@ -33,14 +33,10 @@ function injectInto(locator, injection) {
             const body = locator.replace(/\[[0-9]+\]$/, '')
 
             return injectInto(body, injection) + nums
-        } else {
-            // Locator ends with brackets, which contain some properties
-            return locator.substring(0, locator.length - 1) + ' and ' + injection
         }
-    } else {
-        // Locator contains no brackets
-        return locator + '[' + injection
+        return locator.substring(0, locator.length - 1) + ' and ' + injection
     }
+    return locator + '[' + injection
 }
 
 function pageObjectGetter(str) {

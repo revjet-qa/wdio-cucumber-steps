@@ -1,4 +1,5 @@
 /* eslint no-undef: 0 */
+/* eslint new-cap: 0 */
 
 const { defineSupportCode } = require('cucumber')
 const { dictionaryObject, getDictionaryObject } = require('../helpers/objects.processor')
