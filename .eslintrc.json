@@ -30,14 +30,11 @@
         "EC": true
     },
     "root": true,
-    "ecmaFeatures": {
-        "modules": true
-    },
     "rules": {
         // Possible Errors
         "comma-dangle": [2, "never"],
         "no-cond-assign": 2,
-        "no-console": 0,
+        "no-console": 1,
         "no-constant-condition": 2,
         "no-control-regex": 2,
         "no-debugger": 2,
@@ -88,7 +85,7 @@
         "no-caller": 2,
         "no-case-declarations": 2,
         "no-div-regex": 2,
-        "no-else-return": 1,
+        "no-else-return": 0,
         "no-empty-pattern": 2,
         "no-eq-null": 2,
         "no-eval": 2,
@@ -133,7 +130,7 @@
         "yoda": [2, "never", { "exceptRange": true }],
 
         // Strict Mode
-        "strict": [0, "global"],
+        "strict": [2, "global"],
 
         // Variables
         "init-declarations": 0,
@@ -145,7 +142,7 @@
         "no-undef-init": 2,
         "no-undef": 2,
         "no-undefined": 0,
-        "no-unused-vars": 1,
+        "no-unused-vars": 2,
         "no-use-before-define": 2,
 
         // Stylistic Issues
@@ -170,7 +167,7 @@
         "linebreak-style": [2, "unix"],
         "lines-around-comment": 0,
         "max-nested-callbacks": [2, 5],
-        "new-cap": 2,
+        "new-cap": 0,
         "new-parens": 2,
         "newline-after-var": 2,
         "no-array-constructor": 2,
@@ -198,7 +195,7 @@
         "padded-blocks": 0,
         "quote-props": [2, "consistent-as-needed"],
         "quotes": [2, "single", "avoid-escape"],
-        "require-jsdoc": 2,
+        "require-jsdoc": 0,
         "semi-spacing": [2, {"before": false, "after": true}],
         "semi": [0, "always"],
         "sort-vars": 0,
