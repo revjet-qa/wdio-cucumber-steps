@@ -1,5 +1,3 @@
-'use strict'
-
 /* eslint no-param-reassign: 0*/
 /* eslint no-undef: 0 */
 

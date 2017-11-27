@@ -1,7 +1,5 @@
 /* eslint no-undef: 0 */
 
-'use strict'
-
 const { defineSupportCode } = require('cucumber')
 const { dictionaryObject, getDictionaryObject } = require('../helpers/objects.processor')
 const { _r } = require('../helpers/utils')
