@@ -26,5 +26,6 @@ install:
 
 # http://docs.travis-ci.com/user/pull-requests/
 script:
+  - npm run lint  
   - npm run mocha
   - npm run cucumber
