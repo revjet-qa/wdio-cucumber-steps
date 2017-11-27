@@ -70,7 +70,7 @@ function getPageObject(str) {
     const pageObjectGetterFunc = objectsProcessor.pageObjectGetter || pageObjectGetter
     const value = pageObjectGetterFunc(str)
     const idValue = value.replace(_r(regDynamicId, 'g'), id.getId())
-    const injection = 'not(ancestor-or-self::*[contains(@style,"visibility: hidden") ' +
+    const injection = 'not(ancestor-or-self::*[contains(@style,"visibility: hidden;") ' +
     'or contains(@style,"display: none") or contains(@class,"x-hide-offsets")])'
     const injectedvalue = injectInto(idValue, injection)
 
