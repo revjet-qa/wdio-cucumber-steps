@@ -1,6 +1,5 @@
-'use strict'
-
 /* eslint no-param-reassign: 0*/
+/* eslint no-undef: 0 */
 
 const { _r } = require('./utils')
 
@@ -8,11 +7,11 @@ const dynamicId = '$dynamicId$'
 const regDynamicId = '\\$dynamicId\\$'
 
 // Can come from applysteps ??
-const pageObject = '("[^"]+"\."[^"]+")'
-const pageObjectsParts = '^"([^"]+)"\."([^"]+)"$'
+const pageObject = '([a-zA-Z0-9_-]+ from [a-zA-Z0-9_-]+ page)'
+const pageObjectsParts = '^([a-zA-Z0-9_-]+) from ([a-zA-Z0-9_-]+) page$'
 
-const dictionaryObject = '("[^"]+"\."[^"]+"|"[^"]*")'
-const dictionaryObjectsParts = '^(?:"([^"]+)"\."([^"]+)"|"([^"]*)")$'
+const dictionaryObject = '([a-zA-Z0-9_-]+ from [a-zA-Z0-9_-]+ dictionary|"[^"]*")'
+const dictionaryObjectsParts = '^(?:([a-zA-Z0-9_-]+) from ([a-zA-Z0-9_-]+) dictionary|"([^"]*)")$'
 
 // Todo do we need this in csp-qa
 function injectInto(locator, injection) {
@@ -34,64 +33,61 @@ function injectInto(locator, injection) {
             const body = locator.replace(/\[[0-9]+\]$/, '')
 
             return injectInto(body, injection) + nums
-        } else {
-            // Locator ends with brackets, which contain some properties
-            return locator.substring(0, locator.length - 1) + ' and ' + injection
         }
-    } else {
-        // Locator contains no brackets
-        return locator + '[' + injection
+        return locator.substring(0, locator.length - 1) + ' and ' + injection
     }
+    return locator + '[' + injection
 }
 
-function parsePageObject(str) {
+function pageObjectGetter(str) {
     const match = _r(pageObjectsParts).exec(str)
 
     if (!match) {
         throw new Error(`Was unable to find Page Object for "${str}"`)
     }
     if (match[1]) {
-        const page = match[1]
-        const object = match[2]
+        const page = match[2]
+        const object = match[1]
 
-        if (!this.pages[page]) {
+        if (!pages[page]) {
             throw new Error(`"${page}" page is missing`)
         }
-        if (!this.pages[page][object]) {
+        if (!pages[page][object]) {
             throw new Error(`"${object}" page object is missing for the "${page}" page`)
         }
-        return this.pages[page][object]
+        return pages[page][object]
     }
     throw new Error(`Unknown Page Object type for "${str}"`)
 }
 
 function getPageObject(str) {
-    const value = parsePageObject.call(this, str)
-    const idValue = value.replace(_r(regDynamicId, 'g'), this.id)
+    const pageObjectGetterFunc = objectsProcessor.pageObjectGetter || pageObjectGetter
+    const value = pageObjectGetterFunc(str)
+    const idValue = value.replace(_r(regDynamicId, 'g'), id.getId())
     const injection = 'not(ancestor-or-self::*[contains(@style,"visibility: hidden;") ' +
-    'or contains(@style,"display: none;") or contains(@class,"x-hide-offsets")])';
+    'or contains(@style,"display: none") or contains(@class,"x-hide-offsets")])'
     const injectedvalue = injectInto(idValue, injection)
 
     return injectedvalue
 }
 
-function parseDictionaryObject(str) {
+function dicionaryGetter(str) {
     const match = _r(dictionaryObjectsParts).exec(str)
 
     if (!match) {
         throw new Error(`Was unable to find Dictionary Object type for  "${str}"`)
     }
     if (match[1]) {
-        const dictionary = match[1]
-        const object = match[2]
+        const dictionary = match[2]
+        const object = match[1]
 
-        if (!this.pages[dictionary]) {
+        if (!pages[dictionary]) {
             throw new Error(`"${dictionary}" page is missing`)
         }
-        if (!this.pages[dictionary][object]) {
+        if (!pages[dictionary][object]) {
             throw new Error(`"${object}" page object is missing for the "${dictionary}" page`)
         }
-        return this.pages[dictionary][object]
+        return pages[dictionary][object]
     }
     if (match[3] !== undefined) {
         return match[3]
@@ -100,8 +96,9 @@ function parseDictionaryObject(str) {
 }
 
 function getDictionaryObject(str) {
-    const value = parseDictionaryObject.call(this, str)
-    const idValue = value.replace(_r(regDynamicId, 'g'), this.id)
+    const dicionaryGetterFunc = objectsProcessor.dicionaryGetter || dicionaryGetter
+    const value = dicionaryGetterFunc(str)
+    const idValue = value.replace(_r(regDynamicId, 'g'), id.getId())
 
     return idValue
 }

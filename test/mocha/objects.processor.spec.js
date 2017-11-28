@@ -1,5 +1,3 @@
-'use strict';
-
 const { expect } = require('chai')
 
 const {
@@ -14,17 +12,20 @@ const { _r } = require('../../src/helpers/utils')
 
 const realId = 12345
 
-const World = {
-    id: realId,
-    pages: {
-        page: {
-            object: `//div[@id='${dynamicId}']`
-        },
-        dictionary: {
-            object: `dictionaryObject${dynamicId}`
-        }
+global.pages = {
+    main: {
+        object: `//div[@id='${dynamicId}']`
+    },
+    book: {
+        word: `dictionaryObject${dynamicId}`
     }
 }
+
+global.id = {
+    getId: () => realId
+}
+
+global.objectsProcessor = { }
 
 describe('injectInto', () => {
     const data = [
@@ -36,18 +37,18 @@ describe('injectInto', () => {
 
     data.forEach((d) => {
         it(`should get "${d.result}" string from "${d.locator}" and "${d.injection}" injection`, () => {
-            expect(injectInto(d.locator, d.injection)).to.be.equals(d.result);
-        });
-    });
-});
+            expect(injectInto(d.locator, d.injection)).to.be.equals(d.result)
+        })
+    })
+})
 
 describe('getPageObject', () => {
     const data = [
         {
-            step: 'When I click "page"."object"',
+            step: 'When I click object from main page',
             regExp: _r(`When I click ${pageObject}`),
             result: `//div[@id='${realId}' and not(ancestor-or-self::*[contains(@style,"visibility: hidden;") ` +
-                'or contains(@style,"display: none;") or contains(@class,"x-hide-offsets")])]'
+                'or contains(@style,"display: none") or contains(@class,"x-hide-offsets")])]'
         }
     ]
 
@@ -59,18 +60,18 @@ describe('getPageObject', () => {
 
             expect(match).to.be.an('array')
             const strPageObject = match[1]
-            const pageObjectVal = getPageObject.call(World, strPageObject)
+            const pageObjectVal = getPageObject(strPageObject)
 
             expect(pageObjectVal).to.be.equals(result)
             next()
-        });
-    });
-});
+        })
+    })
+})
 
 describe('getDictionaryObject', () => {
     const data = [
         {
-            step: 'When I write "dictionary"."object"',
+            step: 'When I write word from book dictionary',
             regExp: _r(`When I write ${dictionaryObject}`),
             result: `dictionaryObject${realId}`
         },
@@ -89,10 +90,10 @@ describe('getDictionaryObject', () => {
 
             expect(match).to.be.an('array')
             const strDictionaryObject = match[1]
-            const dictionaryObjectVal = getDictionaryObject.call(World, strDictionaryObject)
+            const dictionaryObjectVal = getDictionaryObject(strDictionaryObject)
 
             expect(dictionaryObjectVal).to.be.equals(result)
             next()
-        });
-    });
-});
+        })
+    })
+})
