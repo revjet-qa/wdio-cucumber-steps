@@ -71,13 +71,19 @@ git rebase upstream/master
 
 ### Test
 
-Bug fixes and features **should have tests**. Look at other tests to see how
+Bug fixes and features **should have tests**. Look at [other tests](https://github.com/revjet-qa/wdio-cucumber-steps/tree/master/test) to see how
 they should be structured.
 
-This project makes use of code linting and e2e tests to make sure we don't break
+This project makes use of code linting, unit and e2e tests to make sure we don't break
 anything. Before you submit your pull request make sure you pass all the tests -
-they can be executed locally or remotely using Travis CI. Remote tests run is
-triggered by each pull request.
+they can be executed locally or remotely using Travis CI:
+
+- To code linting locally use: `npm run lint`
+- Run all unit tests locally with: `npm run mocha`
+- Run all e2e tests locally with: `npm run cucumber`
+- To run all tests together locally launch: `npm test`
+
+Anyway, all tests run is triggered by each pull request.
 
 ### Push
 
@@ -129,7 +135,6 @@ OK, we are almost ready to publish - follow the next steps:
     `git clone https://github.com/revjet-qa/wdio-cucumber-steps.git`
 - [Login to npm](https://docs.npmjs.com/cli/adduser) if you need to: `npm login`
 - Install wdio-cucumber-steps packages with: `npm install`
-- Run linting to check the code: `npm run lint`
 - Run the tests to ensure all is still good: `npm test`
 
 If all the tests passed then we are going to ship:
