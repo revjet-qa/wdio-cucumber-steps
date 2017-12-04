@@ -1,5 +1,7 @@
-let e = {}
+'use strict';
 
-e.txtHeader = '//*[@id="header"]'
+let e = {};
 
-module.exports = e
+e.txtHeader = '//*[@id="header"]';
+
+module.exports = e;

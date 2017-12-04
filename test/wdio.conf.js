@@ -1,5 +1,8 @@
+'use strict';
+
 /* eslint max-len: 0 */
 /* eslint no-unused-vars: 0 */
+/* eslint no-multi-spaces: 0 */
 
 exports.config = {
     //
@@ -198,7 +201,7 @@ exports.config = {
             getId: () => this.value
         };
 
-        global.objectsProcessor = { };
+        global.objectsProcessor = {};
 
     }
     /**
