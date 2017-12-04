@@ -1,7 +1,7 @@
-/* eslint-disable */
+/* eslint max-len: 0 */
+/* eslint no-unused-vars: 0 */
 
 exports.config = {
-    
     //
     // ==================
     // Specify Test Files
@@ -146,9 +146,8 @@ exports.config = {
         strict: false,      // <boolean> fail if there are any undefined or pending steps
         tags: [],           // <string[]> (expression) only execute the features or scenarios with tags matching the expression
         timeout: 20000,     // <number> timeout for step definitions
-        ignoreUndefinedDefinitions: false, // <boolean> Enable this config to treat undefined definitions as warnings.
+        ignoreUndefinedDefinitions: false // <boolean> Enable this config to treat undefined definitions as warnings.
     },
-    
     //
     // =====
     // Hooks
@@ -191,17 +190,17 @@ exports.config = {
 
         global.pages = {
             main: require('./features/page_objects/main')
-        }
+        };
 
         global.id = {
             value: '',
             regenerate: () => this.value === (new Date()).getTime(),
             getId: () => this.value
-        }
+        };
 
-        global.objectsProcessor = { }
+        global.objectsProcessor = { };
 
-    },
+    }
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {String} commandName hook command name
@@ -209,7 +208,7 @@ exports.config = {
      */
     // beforeCommand: function (commandName, args) {
     // },
-    
+
     /**
      * Runs before a Cucumber feature
      * @param {Object} feature feature details
@@ -246,7 +245,7 @@ exports.config = {
      */
     // afterFeature: function (feature) {
     // },
-    
+
     /**
      * Runs after a WebdriverIO command gets executed
      * @param {String} commandName hook command name
@@ -281,4 +280,4 @@ exports.config = {
      */
     // onComplete: function(exitCode, config, capabilities) {
     // }
-}
+};
