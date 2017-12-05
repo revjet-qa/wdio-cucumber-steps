@@ -1,5 +1,3 @@
-'use strict';
-
 /* eslint max-len: 0 */
 /* eslint no-unused-vars: 0 */
 /* eslint no-multi-spaces: 0 */

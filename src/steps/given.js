@@ -1,5 +1,3 @@
-'use strict';
-
 /* eslint new-cap: 0 */
 
 const { defineSupportCode } = require('cucumber');

@@ -130,7 +130,7 @@
         "yoda": [2, "never", { "exceptRange": true }],
 
         // Strict Mode
-        "strict": [0, "global"],
+        "strict": [2, "global"],
 
         // Variables
         "init-declarations": 0,

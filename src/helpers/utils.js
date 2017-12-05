@@ -1,5 +1,3 @@
-'use strict';
-
 const escapeRegExp = function (str) {
     return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\$&');
 };
