@@ -1,5 +1,5 @@
-let e = {}
+let e = {};
 
-e.txtHeader = '//*[@id="header"]'
+e.txtHeader = '//*[@id="header"]';
 
-module.exports = e
+module.exports = e;

@@ -197,7 +197,7 @@
         "quotes": [2, "single", "avoid-escape"],
         "require-jsdoc": 1,
         "semi-spacing": [2, {"before": false, "after": true}],
-        "semi": [0, "always"],
+        "semi": [2, "always"],
         "sort-vars": 0,
         "keyword-spacing": 2,
         "space-before-blocks": 2,
