@@ -1,6 +1,6 @@
 {
   "name": "wdio-cucumber-steps",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Cucumber step definitions written with WebdriverIO",
   "main": "index.js",
   "engines": {
