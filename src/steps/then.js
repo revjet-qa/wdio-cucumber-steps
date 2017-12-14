@@ -3,6 +3,7 @@
 const { defineSupportCode } = require('cucumber');
 const { pageObject, getPageObject } = require('../helpers/objects.processor');
 const { _r } = require('../helpers/utils');
+const timeout = 500;
 
 module.exports = function () {
     defineSupportCode(({ Then }) => {
@@ -16,6 +17,14 @@ module.exports = function () {
 
             browser.$(locator).waitForExist();
         });
+        Then(_r(`^${pageObject} should not be present$`), (object) => {
+            /**
+             * The element should not be present
+             * @type {PageObject}
+             */
+            const locator = getPageObject(object);
 
+            browser.$(locator).waitForExist(timeout, true);
+        });
     });
 };

@@ -39,6 +39,17 @@ function injectInto(locator, injection) {
     return locator + '[' + injection;
 }
 
+/**
+ * Will look for integers in received string and returns them
+ * @param {string} str - dictionaryObject
+ * @returns {integer}
+ */
+function getInteger(str) {
+    const int = parseInt(str.replace(/\D+/g, ''), 10);
+
+    return int;
+}
+
 function pageObjectGetter(str) {
     const match = _r(pageObjectsParts).exec(str);
 
@@ -109,5 +120,6 @@ module.exports = {
     dictionaryObject,
     injectInto,
     getPageObject,
-    getDictionaryObject
+    getDictionaryObject,
+    getInteger
 };
