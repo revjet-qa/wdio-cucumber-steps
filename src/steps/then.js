@@ -16,6 +16,14 @@ module.exports = function () {
 
             browser.$(locator).waitForExist();
         });
+        Then(_r(`^${pageObject} should not be present$`), (object) => {
+            /**
+             * The element should not be present
+             * @type {PageObject}
+             */
+            const locator = getPageObject(object);
 
+            browser.$(locator).waitForExist(null, true);
+        });
     });
 };

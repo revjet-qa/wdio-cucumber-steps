@@ -190,7 +190,8 @@ exports.config = {
         global.should = chai.should();
 
         global.pages = {
-            main: require('./features/page_objects/main')
+            main: require('./features/page_objects/main'),
+            values: require('./features/dictionary_objects/values')
         };
 
         global.id = {
