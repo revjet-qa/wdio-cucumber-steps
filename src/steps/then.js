@@ -3,7 +3,6 @@
 const { defineSupportCode } = require('cucumber');
 const { pageObject, getPageObject } = require('../helpers/objects.processor');
 const { _r } = require('../helpers/utils');
-const timeout = 500;
 
 module.exports = function () {
     defineSupportCode(({ Then }) => {
@@ -24,7 +23,7 @@ module.exports = function () {
              */
             const locator = getPageObject(object);
 
-            browser.$(locator).waitForExist(timeout, true);
+            browser.$(locator).waitForExist(null, true);
         });
     });
 };

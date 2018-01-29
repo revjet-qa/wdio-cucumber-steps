@@ -1,20 +1,21 @@
 /* eslint new-cap: 0 */
 
 const { defineSupportCode } = require('cucumber');
-const { dictionaryObject, getInteger } = require('../helpers/objects.processor');
-const { _r } = require('../helpers/utils');
+const { dictionaryObject, getDictionaryObject } = require('../helpers/objects.processor');
+const { _r, getInteger } = require('../helpers/utils');
+
 
 module.exports = function () {
     defineSupportCode(({ When }) => {
 
-        When(_r(`I wait ${dictionaryObject} ms$`), (timeValue) => {
+        When(_r(`I wait ${dictionaryObject} ms$`), (timeObject) => {
             /**
              * Wait in milliseconds
-             * @type {String} or {DictionaryObject}
+             * @type {String}
              */
-            const time = getInteger.call(this, timeValue);
+            const timeValue = getDictionaryObject.call(this, timeObject);
+            const time = getInteger(timeValue);
 
-            // console.log('step returns ' + time);
             browser.pause(time);
         });
 
