@@ -8,10 +8,10 @@ Feature: Present / Not present
   Scenario: Check I write method
     Given I open "http://localhost:9000"
     Then txtHeader from main page should be present
-    # Then "main"."txtHeader" should be present
     Then divTimeout from main page should be present
     When I wait "5000" ms
     Then divTimeout from main page should not be present
     Then txtHeader from main page should be present
-    
     Then I wait txtTimeout from values dictionary ms
+    Then divTimeout from main page should not be present
+    Then txtHeader from main page should be present
