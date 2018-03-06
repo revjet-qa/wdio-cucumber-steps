@@ -19,5 +19,19 @@ module.exports = function () {
             browser.pause(time);
         });
 
+        When(_r('I close current tab$'), () => {
+            /**
+             * Close current tab
+             */
+            browser.close();
+        });
+
+        When(_r('I open new window$'), () => {
+            /**
+             * Open default 'about:blank' tab
+             */
+            browser.newWindow('about:blank');
+        });
+
     });
 };
