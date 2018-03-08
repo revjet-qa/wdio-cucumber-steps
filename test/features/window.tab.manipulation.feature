@@ -12,7 +12,7 @@ Feature: Window/tab
     Then txtNewHeader from main page should be present
     When I open new window
     Then div from main page should not be present
-    When I close current tab
+    And I close current tab
 
   Scenario: Close current step should close recently opened tab
     Given I open "http://localhost:9000"    
