@@ -16,6 +16,7 @@ module.exports = function () {
 
             browser.$(locator).waitForExist();
         });
+
         Then(_r(`^${pageObject} should not be present$`), (object) => {
             /**
              * The element should not be present
@@ -25,5 +26,6 @@ module.exports = function () {
 
             browser.$(locator).waitForExist(null, true);
         });
+
     });
 };
