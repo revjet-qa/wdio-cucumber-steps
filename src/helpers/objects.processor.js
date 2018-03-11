@@ -16,17 +16,17 @@ const dictionaryObjectsParts = '^(?:([a-zA-Z0-9_-]+) from ([a-zA-Z0-9_-]+) dicti
 // Todo do we need this in csp-qa
 function injectInto (locator, injection) {
     const lastInjectionSymbol = injection.slice(-1);
-    const lastLocatorSumbol = locator.slice(-1);
+    const lastLocatorSymbol = locator.slice(-1);
 
     if (lastInjectionSymbol !== ']') {
         // Add ']' to the end of injection only if missing (for backward compatibility)
         injection += ']';
     }
-    if (lastLocatorSumbol === ')') {
+    if (lastLocatorSymbol === ')') {
         // If our locator ends with round brackets
         return injectInto(locator.replace(/\)$/, ''), injection) + ')';
     }
-    if (lastLocatorSumbol === ']') {
+    if (lastLocatorSymbol === ']') {
         if (locator.match(/\[[0-9]+\]$/)) {
             // Locator ends with brackets, which contains some xpath num
             const nums = locator.match(/\[[0-9]+\]$/)[0];
