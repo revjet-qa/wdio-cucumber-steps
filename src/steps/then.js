@@ -7,22 +7,22 @@ const { _r } = require('../helpers/utils');
 module.exports = function () {
     defineSupportCode(({ Then }) => {
 
-        Then(_r(`^${pageObject} should be present$`), (object) => {
+        Then(_r(`^${pageObject} should be present$`), (element) => {
             /**
              * The element should be present
-             * @type {PageObject}
+             * @param {pageObject} element - String or "page"."object" to select the element
              */
-            const locator = getPageObject(object);
+            const locator = getPageObject(element);
 
             browser.$(locator).waitForExist();
         });
 
-        Then(_r(`^${pageObject} should not be present$`), (object) => {
+        Then(_r(`^${pageObject} should not be present$`), (element) => {
             /**
              * The element should not be present
-             * @type {PageObject}
+             * @param {pageObject} element - String or "page"."object" to select the element
              */
-            const locator = getPageObject(object);
+            const locator = getPageObject(element);
 
             browser.$(locator).waitForExist(null, true);
         });

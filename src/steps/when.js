@@ -11,7 +11,7 @@ module.exports = function () {
         When(_r(`I wait ${dictionaryObject} ms$`), (timeObject) => {
             /**
              * Wait for specified amount of milliseconds
-             * @type {String}
+             * @param {String} timeObject - String with specified amount of milliseconds
              */
             const timeValue = getDictionaryObject.call(this, timeObject);
             const time = getInteger(timeValue);
