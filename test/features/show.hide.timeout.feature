@@ -15,3 +15,8 @@ Feature: Present / Not present
     Then I wait txtTimeout from values dictionary ms
     Then divTimeout from main page should not be present
     Then txtHeader from main page should be present
+
+  Scenario: I click step should click on the element
+    Given I open "http://localhost:9000"
+    Then I click txtHeader from main page
+    When I wait "5000" ms

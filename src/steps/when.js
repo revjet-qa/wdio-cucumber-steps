@@ -1,12 +1,22 @@
 /* eslint new-cap: 0 */
 
 const { defineSupportCode } = require('cucumber');
-const { dictionaryObject, getDictionaryObject } = require('../helpers/objects.processor');
+const { pageObject, getPageObject, dictionaryObject, getDictionaryObject } = require('../helpers/objects.processor');
 const { _r, getInteger } = require('../helpers/utils');
 
 
 module.exports = function () {
     defineSupportCode(({ When }) => {
+
+        When(_r(`I click ${pageObject}$`), (element) => {
+            /**
+             * Click on the element
+             * @param {pageObject} element - String or "page"."object" to select the element
+             */
+            const locator = getPageObject(element);
+
+            browser.waitForExist(locator).waitForLoaded().focus(locator).click(locator);
+        });
 
         When(_r(`I wait ${dictionaryObject} ms$`), (timeObject) => {
             /**
