@@ -48,7 +48,7 @@ describe('getPageObject', () => {
             step: 'When I click object from main page',
             regExp: _r(`When I click ${pageObject}`),
             result: `//div[@id='${realId}' and not(ancestor-or-self::*[contains(@style,"visibility: hidden;")
-                 or contains(@style,"display: none") or contains(@class,"x-hide-offsets")])]`
+         or contains(@style,"display: none") or contains(@class,"x-hide-offsets")])]`
         }
     ];
 
