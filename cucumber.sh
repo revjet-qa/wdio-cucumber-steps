@@ -3,7 +3,27 @@
 #Run server in background
 node_modules/http-server/bin/http-server ./test/demo-app -p 9000 > /dev/null &
 server=$!
+
 #Run tests
-./node_modules/.bin/wdio test/wdio.conf.js
+#Use SPEC="..." to set path to .feature file to run tests from
+if [ "$SPEC" != "" ]; then
+    ADDITIONAL_ARGUMENTS=" --spec $SPEC"
+fi
+
+./node_modules/.bin/wdio test/wdio.conf.js $ADDITIONAL_ARGUMENTS
+
+#Check and save the status of tests run
+if [ $? -eq 0 ]
+then
+  echo "Cucumber run success"
+  STATUS=0
+else
+  echo "Cucumber run had errors"
+  STATUS=1
+fi
+
 #Kill server after run
 kill -9 ${server}
+
+#Exit with proper status
+exit $STATUS
