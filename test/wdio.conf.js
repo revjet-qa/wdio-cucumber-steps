@@ -192,18 +192,21 @@ exports.config = {
         global.assert = chai.assert;
         global.should = chai.should();
 
-        global.pages = {
-            main: require('./features/page_objects/main'),
-            values: require('./features/dictionary_objects/values')
-        };
+        let stepsConfig = require('./steps.conf.js');
 
-        global.id = {
-            value: '',
-            regenerate: () => this.value === (new Date()).getTime(),
-            getId: () => this.value
-        };
+        global.loaderSelectors = stepsConfig.loaderSelectors || [
+            'div:not([style*="display: none"])[class*="loader"]',
+            'div:not([style*="visibility: hidden"])[class*="loader"]'
+        ];
+
+        global.pages = stepsConfig.pages;
+
+        global.id = stepsConfig.id;
 
         global.objectsProcessor = {};
+
+        // Add browser.waitForLoaded() command to wait for page to get fully loaded
+        browser.addCommand('waitForLoaded', require('../src/helpers/wait.for.loaded.js'));
 
     }
     /**
