@@ -10,8 +10,8 @@ module.exports = function () {
 
         When(_r(`I wait ${dictionaryObject} ms$`), (timeObject) => {
             /**
-             * Wait in milliseconds
-             * @type {String}
+             * Wait for specified amount of milliseconds
+             * @param {String} timeObject - String with specified amount of milliseconds
              */
             const timeValue = getDictionaryObject.call(this, timeObject);
             const time = getInteger(timeValue);
@@ -28,7 +28,7 @@ module.exports = function () {
 
         When(_r('I open new window$'), () => {
             /**
-             * Open default 'about:blank' tab
+             * Open default empty ('about:blank') tab
              */
             browser.newWindow('about:blank');
         });

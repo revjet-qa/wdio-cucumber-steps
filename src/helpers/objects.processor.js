@@ -1,4 +1,4 @@
-/* eslint no-param-reassign: 0*/
+/* eslint no-param-reassign: 0 */
 /* eslint no-undef: 0 */
 
 const { _r } = require('./utils');
@@ -14,7 +14,7 @@ const dictionaryObject = '([a-zA-Z0-9_-]+ from [a-zA-Z0-9_-]+ dictionary|"[^"]*"
 const dictionaryObjectsParts = '^(?:([a-zA-Z0-9_-]+) from ([a-zA-Z0-9_-]+) dictionary|"([^"]*)")$';
 
 // Todo do we need this in csp-qa
-function injectInto(locator, injection) {
+function injectInto (locator, injection) {
     const lastInjectionSymbol = injection.slice(-1);
     const lastLocatorSumbol = locator.slice(-1);
 
@@ -28,7 +28,7 @@ function injectInto(locator, injection) {
     }
     if (lastLocatorSumbol === ']') {
         if (locator.match(/\[[0-9]+\]$/)) {
-            // Locator ends with brackets, which contain some xpath num
+            // Locator ends with brackets, which contains some xpath num
             const nums = locator.match(/\[[0-9]+\]$/)[0];
             const body = locator.replace(/\[[0-9]+\]$/, '');
 
@@ -39,7 +39,7 @@ function injectInto(locator, injection) {
     return locator + '[' + injection;
 }
 
-function pageObjectGetter(str) {
+function pageObjectGetter (str) {
     const match = _r(pageObjectsParts).exec(str);
 
     if (!match) {
@@ -60,22 +60,22 @@ function pageObjectGetter(str) {
     throw new Error(`Unknown Page Object type for "${str}"`);
 }
 
-function getPageObject(str) {
+function getPageObject (str) {
     const pageObjectGetterFunc = objectsProcessor.pageObjectGetter || pageObjectGetter;
     const value = pageObjectGetterFunc(str);
     const idValue = value.replace(_r(regDynamicId, 'g'), id.getId());
-    const injection = 'not(ancestor-or-self::*[contains(@style,"visibility: hidden;") ' +
-    'or contains(@style,"display: none") or contains(@class,"x-hide-offsets")])';
+    const injection = `not(ancestor-or-self::*[contains(@style,"visibility: hidden;")
+         or contains(@style,"display: none") or contains(@class,"x-hide-offsets")])`;
     const injectedValue = injectInto(idValue, injection);
 
     return injectedValue;
 }
 
-function dicionaryGetter(str) {
+function dictionaryGetter (str) {
     const match = _r(dictionaryObjectsParts).exec(str);
 
     if (!match) {
-        throw new Error(`Was unable to find Dictionary Object type for  "${str}"`);
+        throw new Error(`Was unable to find Dictionary Object type for "${str}"`);
     }
     if (match[1]) {
         const dictionary = match[2];
@@ -95,9 +95,9 @@ function dicionaryGetter(str) {
     throw new Error(`Unknown Dictionary Object type for "${str}"`);
 }
 
-function getDictionaryObject(str) {
-    const dicionaryGetterFunc = objectsProcessor.dicionaryGetter || dicionaryGetter;
-    const value = dicionaryGetterFunc(str);
+function getDictionaryObject (str) {
+    const dictionaryGetterFunc = objectsProcessor.dictionaryGetter || dictionaryGetter;
+    const value = dictionaryGetterFunc(str);
     const idValue = value.replace(_r(regDynamicId, 'g'), id.getId());
 
     return idValue;
