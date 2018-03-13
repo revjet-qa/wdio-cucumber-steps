@@ -4,7 +4,6 @@ const { defineSupportCode } = require('cucumber');
 const { pageObject, getPageObject, dictionaryObject, getDictionaryObject } = require('../helpers/objects.processor');
 const { _r, getInteger } = require('../helpers/utils');
 
-
 module.exports = function () {
     defineSupportCode(({ When }) => {
 
@@ -15,7 +14,7 @@ module.exports = function () {
              */
             const locator = getPageObject(element);
 
-            browser.waitForExist(locator).waitForLoaded().focus(locator).click(locator);
+            browser.waitForExist(locator).waitForPageToLoad().focus(locator).click(locator);
         });
 
         When(_r(`I wait ${dictionaryObject} ms$`), (timeObject) => {

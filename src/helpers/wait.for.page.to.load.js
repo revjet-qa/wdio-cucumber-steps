@@ -1,4 +1,4 @@
-module.exports = function waitForLoaded (callback) {
+module.exports = function waitForPageToLoad (callback) {
     /**
      * Wait for page to get fully loaded
      * @param {callback} callback - A callback to run

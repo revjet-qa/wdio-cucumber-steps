@@ -205,8 +205,8 @@ exports.config = {
 
         global.objectsProcessor = {};
 
-        // Add browser.waitForLoaded() command to wait for page to get fully loaded
-        browser.addCommand('waitForLoaded', require('../src/helpers/wait.for.loaded.js'));
+        // Add browser.waitForPageToLoad() command to wait for page to get fully loaded
+        browser.addCommand('waitForPageToLoad', require('../src/helpers/wait.for.page.to.load.js'));
 
     }
     /**
