@@ -12,7 +12,10 @@ const { _r } = require('../../src/helpers/utils');
 
 const realId = 12345;
 
-global.pages = {
+// Makes stepsConfig visible globally to use stepsConfig.pages, stepsConfig.id, stepsConfig.loaderSelectors
+global.stepsConfig = {};
+
+global.stepsConfig.pages = {
     main: {
         object: `//div[@id='${dynamicId}']`
     },
@@ -21,7 +24,7 @@ global.pages = {
     }
 };
 
-global.id = {
+global.stepsConfig.id = {
     getId: () => realId
 };
 
