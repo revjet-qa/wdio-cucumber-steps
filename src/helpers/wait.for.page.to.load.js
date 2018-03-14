@@ -1,10 +1,12 @@
+/* global stepsConfig */
+
 module.exports = function waitForPageToLoad (callback) {
     /**
      * Wait for page to get fully loaded
      * @param {callback} callback - A callback to run
      */
     const timeout = 100;
-    let loaderSelectors = global.loaderSelectors;
+    let loaderSelectors = stepsConfig.loaderSelectors;
 
     let finishedLoadingConditions = function () {
         // Check if jQuery is present on the page and if any XMLHttpRequests (AJAX) are in progress
