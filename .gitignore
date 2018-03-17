@@ -13,6 +13,4 @@ node_modules
 downloads
 *~
 .idea
-.vscode
-!.vscode/settings.json
 errorShots/
