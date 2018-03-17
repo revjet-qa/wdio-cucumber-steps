@@ -15,7 +15,7 @@ module.exports = function waitForPageToLoad (callback) {
         }
 
         // Check if any loaders are still present on the page
-        return !loaderSelectors.some((selector) => document.querySelector(selector));
+        return !loaderSelectors.some((selector) => browser.execute((s) => document.querySelector(s), selector));
     };
 
     // If loading of the page was finished - launch callback function
