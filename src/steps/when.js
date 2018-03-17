@@ -13,8 +13,12 @@ module.exports = function () {
              * @param {pageObject} element - String or "page"."object" to select the element
              */
             const locator = getPageObject(element);
+            const el = $(locator);
 
-            browser.waitForExist(locator).waitForPageToLoad().focus(locator).click(locator);
+            // TODO - using of chain here ??
+            el.waitForExist();
+            el.waitForPageToLoad();
+            el.click();
         });
 
         When(_r(`I wait ${dictionaryObject} ms$`), (timeObject) => {
