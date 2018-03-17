@@ -85,6 +85,13 @@ they can be executed locally or remotely using Travis CI:
 
 Anyway, all tests run is triggered by each pull request.
 
+While running tests you can specify what `.feature` file to run - just add the
+`SPEC` parameter with the path to chosen feature file:
+
+```shell
+SPEC="test/features/show.hide.timeout.feature" npm run cucumber
+```
+
 ### Push
 
 ```shell
