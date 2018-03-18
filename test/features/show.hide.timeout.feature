@@ -19,4 +19,3 @@ Feature: Present / Not present
   Scenario: I click step should click on the element
     Given I open "http://localhost:9000"
     Then I click txtHeader from main page
-    When I wait "5000" ms
