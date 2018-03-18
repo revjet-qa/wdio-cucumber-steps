@@ -199,7 +199,9 @@ exports.config = {
         global.stepsConfig = stepsConfigGenerator(stepsConfigPresets);
 
         // Adds browser.waitForPageToLoad() command to wait for page to get fully loaded
-        browser.addCommand('waitForPageToLoad', require('../src/helpers/wait.for.page.to.load.js'));
+        const applyStepsCommands = require('../src/commands');
+
+        applyStepsCommands();
 
     }
     /**
