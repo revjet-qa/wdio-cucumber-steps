@@ -62,7 +62,7 @@ function pageObjectGetter (str) {
 }
 
 function getPageObject (str) {
-    const pageObjectGetterFunc = objectsProcessor.pageObjectGetter || pageObjectGetter;
+    const pageObjectGetterFunc = stepsConfig.objectsProcessor.pageObjectGetter || pageObjectGetter;
     const value = pageObjectGetterFunc(str);
     const idValue = value.replace(_r(regDynamicId, 'g'), stepsConfig.id.getId());
     const injection = `not(ancestor-or-self::*[contains(@style,"visibility: hidden;")
@@ -97,7 +97,7 @@ function dictionaryGetter (str) {
 }
 
 function getDictionaryObject (str) {
-    const dictionaryGetterFunc = objectsProcessor.dictionaryGetter || dictionaryGetter;
+    const dictionaryGetterFunc = stepsConfig.objectsProcessor.dictionaryGetter || dictionaryGetter;
     const value = dictionaryGetterFunc(str);
     const idValue = value.replace(_r(regDynamicId, 'g'), stepsConfig.id.getId());
 

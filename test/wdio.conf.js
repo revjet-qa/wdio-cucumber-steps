@@ -192,10 +192,11 @@ exports.config = {
         global.assert = chai.assert;
         global.should = chai.should();
 
-        // Makes stepsConfig visible globally to use stepsConfig.pages, stepsConfig.id, stepsConfig.loaderSelectors
-        global.stepsConfig = require('./steps.conf.js');
+        // Makes stepsConfig visible globally to use stepsConfig vars
+        const stepsConfigGenerator = require('../src/steps.conf.js');
+        const stepsConfigPresets = require('./steps.conf.js');
 
-        global.objectsProcessor = {};
+        global.stepsConfig = stepsConfigGenerator(stepsConfigPresets);
 
         // Adds browser.waitForPageToLoad() command to wait for page to get fully loaded
         browser.addCommand('waitForPageToLoad', require('../src/helpers/wait.for.page.to.load.js'));
