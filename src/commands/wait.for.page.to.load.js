@@ -15,7 +15,7 @@ module.exports = function waitForPageToLoad (callback) {
     }
 
     // If loading of the page was not finished - relaunch finishedLoadingConditions() each 100 ms
-    let interval = setInterval(function () {
+    const interval = setInterval(function () {
         if (finishedLoadingConditions()) {
             clearInterval(interval);
             callback();

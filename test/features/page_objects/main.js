@@ -1,4 +1,4 @@
-let e = {};
+const e = {};
 
 e.txtHeader = '//*[@id="header"]';
 e.txtNewHeader = '//*[@id="new-header"]';
