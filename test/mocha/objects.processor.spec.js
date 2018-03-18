@@ -9,7 +9,7 @@ const {
     dynamicId
 } = require('../../src/helpers/objects.processor');
 const { _r } = require('../../src/helpers/utils');
-const stepsConfigGenerator = require('../../src/steps.conf');
+const stepsConfigGenerator = require('../../src/steps.conf.generator');
 
 const realId = 12345;
 

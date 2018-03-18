@@ -193,8 +193,8 @@ exports.config = {
         global.should = chai.should();
 
         // Makes stepsConfig visible globally to use stepsConfig vars
-        const stepsConfigGenerator = require('../src/steps.conf.js');
-        const stepsConfigPresets = require('./steps.conf.js');
+        const stepsConfigGenerator = require('../src/steps.conf.generator');
+        const stepsConfigPresets = require('./steps.conf');
 
         global.stepsConfig = stepsConfigGenerator(stepsConfigPresets);
 

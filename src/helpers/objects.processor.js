@@ -64,7 +64,7 @@ function pageObjectGetter (str) {
 function getPageObject (str) {
     const pageObjectGetterFunc = stepsConfig.objectsProcessor.pageObjectGetter || pageObjectGetter;
     const value = pageObjectGetterFunc(str);
-    const idValue = value.replace(_r(regDynamicId, 'g'), stepsConfig.id.id);
+    const idValue = value.replace(_r(regDynamicId, 'g'), stepsConfig.id.idValue);
     const injection = `not(ancestor-or-self::*[contains(@style,"visibility: hidden;")
          or contains(@style,"display: none") or contains(@class,"x-hide-offsets")])`;
     const injectedValue = injectInto(idValue, injection);
@@ -99,7 +99,7 @@ function dictionaryGetter (str) {
 function getDictionaryObject (str) {
     const dictionaryGetterFunc = stepsConfig.objectsProcessor.dictionaryGetter || dictionaryGetter;
     const value = dictionaryGetterFunc(str);
-    const idValue = value.replace(_r(regDynamicId, 'g'), stepsConfig.id.id);
+    const idValue = value.replace(_r(regDynamicId, 'g'), stepsConfig.id.idValue);
 
     return idValue;
 }

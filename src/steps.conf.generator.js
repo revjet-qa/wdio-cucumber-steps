@@ -22,7 +22,7 @@ module.exports = function ({
         constructor () {
             this.value = defaultIdValue || idGenerator.call(this);
         }
-        get id () {
+        get idValue () {
             return this.value;
         }
         regenerate () {
