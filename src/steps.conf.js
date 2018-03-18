@@ -18,10 +18,14 @@ module.exports = function ({
     idGenerator = defaultIdGenerator, // <() => <string|number>> - function, that will return new generated id.
     objectsProcessor = {} // objectsProcessor childs could be previded here - see objects.processor.js for more details.
 }) {
-    const id = {
-        value: defaultIdValue || idGenerator.call(this),
-        getId: () => this.value,
-        regenerate: () => {
+    const Id = class {
+        constructor () {
+            this.value = defaultIdValue || idGenerator.call(this);
+        }
+        get id () {
+            return this.value;
+        }
+        regenerate () {
             this.value = idGenerator.call(this);
         }
     };
@@ -30,7 +34,7 @@ module.exports = function ({
         loaderSelectors,
         finishedLoadingConditions: finishedLoadingConditions.bind(this, loaderSelectors),
         pages,
-        id,
+        id: new Id(),
         objectsProcessor
     };
 };

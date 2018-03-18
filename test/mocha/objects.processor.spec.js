@@ -9,13 +9,12 @@ const {
     dynamicId
 } = require('../../src/helpers/objects.processor');
 const { _r } = require('../../src/helpers/utils');
+const stepsConfigGenerator = require('../../src/steps.conf');
 
 const realId = 12345;
 
 // Makes stepsConfig visible globally to use stepsConfig.pages, stepsConfig.id, stepsConfig.loaderSelectors
-global.stepsConfig = {};
-
-global.stepsConfig.pages = {
+const pages = {
     main: {
         object: `//div[@id='${dynamicId}']`
     },
@@ -23,12 +22,9 @@ global.stepsConfig.pages = {
         word: `dictionaryObject${dynamicId}`
     }
 };
+const idGenerator = () => realId;
 
-global.stepsConfig.id = {
-    getId: () => realId
-};
-
-global.objectsProcessor = {};
+global.stepsConfig = stepsConfigGenerator({ pages, idGenerator });
 
 describe('injectInto', () => {
     const data = [
