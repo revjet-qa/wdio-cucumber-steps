@@ -7,18 +7,20 @@ const { _r, getInteger } = require('../helpers/utils');
 module.exports = function () {
     defineSupportCode(({ When }) => {
 
-        When(_r(`I click ${pageObject}$`), (element) => {
+        When(_r(`I click ${pageObject}$`), async function async (element) {
             /**
              * Click on the element
              * @param {pageObject} element - String or "page"."object" to select the element
              */
             const locator = getPageObject(element);
-            const el = $(locator);
 
-            // TODO - using of chain here ??
-            el.waitForExist();
-            el.waitForPageToLoad();
-            el.click();
+            try {
+                await browser.waitForExist(locator);
+                await browser.waitForPageToLoad();
+                return await browser.click(locator);
+            } catch (err) {
+                throw new Error(err);
+            }
         });
 
         When(_r(`I wait ${dictionaryObject} ms$`), (timeObject) => {
