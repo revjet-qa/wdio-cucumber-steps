@@ -17,6 +17,7 @@ module.exports = function () {
             try {
                 await browser.waitForExist(locator);
                 await browser.waitForPageToLoad();
+                await browser.moveToObject(locator);
                 return await browser.click(locator);
             } catch (err) {
                 throw new Error(err);
