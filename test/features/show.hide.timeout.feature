@@ -5,7 +5,13 @@ Feature: Present / Not present
   As a developer
   I want to check that certain value is present and not present after time
 
-  Scenario: Check I write method
+  Scenario: Check that certain element is present and not present after time
+    Given I open "http://localhost:9000"
+    And divTimeout from main page should be present
+    When I wait "5000" ms
+    Then divTimeout from main page should not be present
+
+  Scenario: I wait step should wait for specified amount of milliseconds
     Given I open "http://localhost:9000"
     Then txtHeader from main page should be present
     Then divTimeout from main page should be present
