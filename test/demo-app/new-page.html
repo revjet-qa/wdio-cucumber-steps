@@ -8,9 +8,14 @@
                 const checkboxTest = document.getElementById("cbx-test");
 
                 checkboxTest.addEventListener("click", function () {
-                    checkboxTest.checked
-                        ? checkboxTest.setAttribute("checked", "checked")
-                        : checkboxTest.removeAttribute("checked");
+                    this.checked
+                        ? this.setAttribute("checked", "checked")
+                        : this.removeAttribute("checked");
+                });
+
+                document.getElementById('block-text').addEventListener('dblclick', function () {
+                    this.innerHTML = 'Test text after double-click';
+                    this.style.background = 'green';
                 });
             }
         </script>
@@ -22,5 +27,6 @@
             <input type="checkbox" id="cbx-test" name="subscribe" value="news">
             <label for="cbx-test">Test checkbox</label>
         </div>
+        <div id="block-text">Double-click before</div>
     </body>
 </html>
