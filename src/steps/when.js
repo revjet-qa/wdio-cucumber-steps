@@ -17,7 +17,7 @@ module.exports = function () {
             try {
                 await browser.waitForExist(locator);
                 await browser.waitForPageToLoad();
-                await browser.scroll(locator);
+                await browser.moveToObject(locator);
                 return await browser.click(locator);
             } catch (err) {
                 throw new Error(err);
@@ -34,9 +34,8 @@ module.exports = function () {
             try {
                 await browser.waitForExist(locator);
                 await browser.waitForPageToLoad();
-                await browser.scroll(locator);
-                await browser.click(locator);
-                return await browser.click(locator);
+                await browser.moveToObject(locator);
+                return await browser.doubleClick(locator);
             } catch (err) {
                 throw new Error(err);
             }
