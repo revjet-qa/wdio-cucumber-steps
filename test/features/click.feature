@@ -14,6 +14,7 @@ Feature: Click
 
   Scenario: I doubleclick step should double-click on the element
     Given I open "http://localhost:9000/new-page.html"
-    And checkboxTestUnchecked from main page should be present
-    When I doubleclick checkboxTest from main page
-    Then checkboxTestUnchecked from main page should be present
+    And blockTextBefore from main page should be present
+    When I doubleclick blockTextBefore from main page
+    Then blockTextBefore from main page should not be present
+    And blockTextAfter from main page should be present

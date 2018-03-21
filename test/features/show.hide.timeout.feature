@@ -8,7 +8,7 @@ Feature: Present / Not present
   Scenario: Check that certain element is present and the other is not present on the page
     Given I open "http://localhost:9000"
     Then divTimeout from main page should be present
-    And checkboxTest from main page should not be present
+    And checkboxTestUnchecked from main page should not be present
 
   Scenario: I wait step should wait for specified amount of milliseconds
     Given I open "http://localhost:9000"
