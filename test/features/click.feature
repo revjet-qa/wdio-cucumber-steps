@@ -18,3 +18,8 @@ Feature: Click
     When I doubleclick blockTextBefore from main page
     Then blockTextBefore from main page should not be present
     And blockTextAfter from main page should be present
+
+  Scenario: waitForPageToLoad should wait for all loaders to finish
+    Given I open "http://localhost:9000/new-page.html"
+    When I click buttonLaunch from main page
+    Then I click buttonWasClicked from main page
