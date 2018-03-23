@@ -5,7 +5,7 @@ module.exports = function waitForPageToLoad () {
      * Wait for page to get fully loaded
      * @param {callback} callback - A callback to run
      */
-    return new Promise(function (resolve, reject) {
+    return new Promise(function (resolve) {
         const timeout = 100;
         const finishedLoadingConditions = stepsConfig.finishedLoadingConditions;
 
