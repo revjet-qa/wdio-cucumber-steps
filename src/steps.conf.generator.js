@@ -5,10 +5,12 @@ const defaultFinishedLoadingConditions = (loaderSelectors) => {
     }
 
     // Check if any loaders are still present on the page
-    return !loaderSelectors.some((selector) => browser.executeAsync(
-        function (s, callback) {
-            callback(document.querySelector(s));
-        }, selector));
+    return !loaderSelectors.some(function (selector) {
+        browser.executeAsync(
+            function (s, callback) {
+                callback(document.querySelector(s));
+            }, selector);
+    });
 };
 
 const defaultIdGenerator = () => (new Date()).getTime();

@@ -1,25 +1,29 @@
 /* global stepsConfig */
 
-module.exports = function waitForPageToLoad (callback) {
+module.exports = function waitForPageToLoad () {
     /**
      * Wait for page to get fully loaded
      * @param {callback} callback - A callback to run
      */
-    const timeout = 100;
-    const finishedLoadingConditions = stepsConfig.finishedLoadingConditions;
+    return new Promise(function (resolve, reject) {
+        const timeout = 100;
+        const finishedLoadingConditions = stepsConfig.finishedLoadingConditions;
 
-    // If loading of the page was finished - launch callback function
-    // TODO - add some waiter here
-    if (finishedLoadingConditions()) {
-        callback();
-    }
-
-    // If loading of the page was not finished - relaunch finishedLoadingConditions() each 100 ms
-    const interval = setInterval(function () {
+        // If loading of the page was finished - launch callback function
+        // TODO - add some waiter here
         if (finishedLoadingConditions()) {
-            clearInterval(interval);
-            callback();
+            return resolve();
         }
-    }, timeout);
+
+        // If loading of the page was not finished - relaunch finishedLoadingConditions() each 100 ms
+        const interval = setInterval(function () {
+            if (finishedLoadingConditions()) {
+                clearInterval(interval);
+                return resolve();
+            }
+        }, timeout);
+    }).catch((err) => {
+        throw new Error(err.message);
+    });
 
 };
