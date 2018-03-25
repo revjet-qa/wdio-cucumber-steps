@@ -5,13 +5,11 @@ const defaultFinishedLoadingConditions = (loaderSelectors) => {
     }
 
     // Check if any loaders are still present on the page
-    browser.executeAsync(function (callback) {
-        return !loaderSelectors.some(function (selector) {
-            document.querySelector(selector);
-        }).then(function (loadingFinished) {
-            return callback(loadingFinished);
-        });
-    });
+    return browser.executeAsync((selectors, done) => {
+        done(!selectors.some((selector) => {
+            return document.querySelector(selector);
+        }));
+    }, loaderSelectors);
 
 };
 
