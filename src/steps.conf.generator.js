@@ -9,7 +9,7 @@ const defaultFinishedLoadingConditions = (loaderSelectors) => {
         done(!selectors.some((selector) => {
             return document.querySelector(selector);
         }));
-    }, loaderSelectors);
+    }, loaderSelectors).value;
 
 };
 
