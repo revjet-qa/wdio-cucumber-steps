@@ -19,4 +19,3 @@ Feature: Window/tab
     When I open new window
     When I close current tab
     Then txtHeader from main page should be present
-

@@ -1,4 +1,4 @@
-let e = {};
+const e = {};
 
 e.txtTimeout = '500';
 

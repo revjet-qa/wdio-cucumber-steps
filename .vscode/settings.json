@@ -1,0 +1,23 @@
+{
+    "cucumberautocomplete.steps": [
+        "src/steps/*.js"
+    ],
+    "cucumberautocomplete.syncfeatures": "test/features/*feature",
+    "cucumberautocomplete.strictGherkinCompletion": true,
+    "cucumberautocomplete.smartSnippets": true,
+    "cucumberautocomplete.stepsInvariants": true,
+    "cucumberautocomplete.customParameters": [
+        {
+            "parameter":"(_r(",
+            "value":"("
+        },
+        {
+            "parameter":"${dictionaryObject}",
+            "value":"([a-zA-Z0-9_-]+ from [a-zA-Z0-9_-]+ dictionary|\"[^\"]*\")"
+        },
+        {
+            "parameter":"${pageObject}",
+            "value":"([a-zA-Z0-9_-]+ from [a-zA-Z0-9_-]+ page)"
+        }
+    ],
+}

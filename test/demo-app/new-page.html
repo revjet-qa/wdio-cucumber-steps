@@ -3,9 +3,45 @@
     <head>
         <title>NEW PAGE FOR THE WDIO-STEPS</title>
         <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="styles/loaders.css">
+        <script src="scripts/loaders.js"></script>
+        <script>
+            window.onload = function () {
+                const checkboxTest = document.getElementById("cbx-test");
+
+                checkboxTest.addEventListener("click", function () {
+                    this.checked
+                        ? this.setAttribute("checked", "checked")
+                        : this.removeAttribute("checked");
+                });
+
+                document.getElementById('block-text').addEventListener('dblclick', function () {
+                    this.innerHTML = 'Test text after double-click';
+                    this.style.background = 'green';
+                });
+
+                document.getElementById('button-launch').addEventListener('click', function () {
+                    const timeout1 = 2000;
+                    const timeout2 = 3000;
+
+                    launchLoader(timeout1, 'loader1');
+                    launchLoader(timeout2, 'loader2');
+                    this.innerHTML = 'Button was clicked';
+                    this.style.background = 'green';
+                });
+            }
+        </script>
     </head>
     <body>
         <div id="new-header">New page header</div>
-        <div id="new-page">New page</div>
+        <div id="new-page" style="height: 1600px;">New page</div>
+        <div>
+            <input type="checkbox" id="cbx-test" name="subscribe" value="news">
+            <label for="cbx-test">Test checkbox</label>
+        </div>
+        <div id="block-text">Double-click before</div>
+        <div id="button-launch" style="width: 220px; height: 20px; border: 1px solid black; text-align: center;">
+            Click to get text
+        </div>
     </body>
 </html>

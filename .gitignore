@@ -8,10 +8,10 @@ node_modules
 !.travis.yml
 !.editorconfig
 !.eslintrc.*
+!.vscode
 *.xml
 .settings
 downloads
 *~
 .idea
-.vscode
 errorShots/

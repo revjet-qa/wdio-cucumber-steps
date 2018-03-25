@@ -7,14 +7,18 @@ const { _r } = require('../helpers/utils');
 module.exports = function () {
     defineSupportCode(({ Given }) => {
 
-        Given(_r(`^I open ${dictionaryObject}$`), (urlDictionary) => {
+        Given(_r(`^I open ${dictionaryObject}$`), async function async (urlDictionary) {
             /**
              * The URL to navigate to
              * @type {String} or {DictionaryObject}
              */
             const url = getDictionaryObject.call(this, urlDictionary);
 
-            browser.url(url);
+            try {
+                return await browser.url(url);
+            } catch (err) {
+                throw new Error(err);
+            }
         });
 
     });
