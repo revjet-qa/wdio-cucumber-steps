@@ -8,7 +8,7 @@ Cucumber step definitions written with WebdriverIO for end-to-end tests
 
 ## Supported versions
 [Node.js](http://nodejs.org/):
-- 6.x
+- 7.x
 
 [WebdriverIO](https://www.npmjs.com/package/webdriverio):
 - 4.x
