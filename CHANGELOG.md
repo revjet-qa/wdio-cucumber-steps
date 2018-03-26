@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.0.4
+
+**Adding steps and functions**
+
+Details:
+- [Added waitForPageToLoad function](https://github.com/revjet-qa/wdio-cucumber-steps/pull/57)
+- [Chrome infobar disable](https://github.com/revjet-qa/wdio-cucumber-steps/pull/55)
+- [Added SPEC=... to set path to .feature file to run tests from](https://github.com/revjet-qa/wdio-cucumber-steps/pull/54)
+- ["I close current tab" and "I open new window" steps added](https://github.com/revjet-qa/wdio-cucumber-steps/pull/53)
+- ["Wait" and "is not present" steps are added](https://github.com/revjet-qa/wdio-cucumber-steps/pull/21)
+
 ## v0.0.3
 
 **Improving infrastructure**
