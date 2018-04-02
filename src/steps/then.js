@@ -41,15 +41,11 @@ module.exports = function () {
             * @param {pageObject} element - String or "page"."object" to select the element
             * @type {String} or {DictionaryObject}
              */
-            const phrase = getDictionaryObject.call(this, textPhrase);
             const locator = getPageObject(element);
-            const locatorText = browser.getText(locator);
+            const locatorText = await browser.getText(locator);
+            const textValue = getDictionaryObject.call(this, textPhrase);
 
-            try {
-                return await locatorText === phrase;
-            } catch (err) {
-                throw new Error(err);
-            }
+            expect(locatorText).to.be.equal(textValue);
         });
 
     });
