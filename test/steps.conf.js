@@ -12,7 +12,12 @@ const pages = {
     values: require('./features/dictionary_objects/values')
 };
 
+// Time in milliseconds to wait before running waitForPageToLoad
+// could be used for the slow frameworks
+const timeoutBeforeWaitForPageToLoad = 0;
+
 module.exports = {
     loaderSelectors,
-    pages
+    pages,
+    timeoutBeforeWaitForPageToLoad
 };
