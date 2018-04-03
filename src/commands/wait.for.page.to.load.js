@@ -1,12 +1,9 @@
 /* global stepsConfig */
 
-module.exports = function waitForPageToLoad () {
+module.exports = async function waitForPageToLoad () {
     /**
      * Wait for page to get fully loaded
      */
-    return new Promise(function (resolve) {
-        setTimeout(() => {
-            return resolve(browser.waitUntil(stepsConfig.finishedLoadingConditions));
-        }, stepsConfig.timeoutBeforeWaitForPageToLoad);
-    });
+    await browser.pause(stepsConfig.timeoutBeforeWaitForPageToLoad);
+    return await browser.waitUntil(stepsConfig.finishedLoadingConditions);
 };
