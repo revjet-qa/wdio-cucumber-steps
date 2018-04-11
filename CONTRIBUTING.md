@@ -15,6 +15,10 @@ action to take before coding begins.
 ## Building
 
 ```shell
+yarn
+```
+OR
+```shell
 npm install
 ```
 
@@ -78,10 +82,10 @@ This project makes use of code linting, unit and e2e tests to make sure we don't
 anything. Before you submit your pull request make sure you pass all the tests -
 they can be executed locally or remotely using Travis CI:
 
-- To code linting locally use: `npm run lint`
-- Run all unit tests locally with: `npm run mocha`
-- Run all e2e tests locally with: `npm run cucumber`
-- To run all tests together locally launch: `npm test`
+- To code linting locally use: `yarn lint` OR `npm run lint`
+- Run all unit tests locally with: `yarn mocha` OR `npm run mocha`
+- Run all e2e tests locally with: `yarn cucumber` OR `npm run cucumber`
+- To run all tests together locally launch: `yarn test` OR `npm test`
 
 Anyway, all tests run is triggered by each pull request.
 
@@ -141,8 +145,8 @@ OK, we are almost ready to publish - follow the next steps:
 - Clone wdio-cucumber-steps from the main repo with this command:
     `git clone https://github.com/revjet-qa/wdio-cucumber-steps.git`
 - [Login to npm](https://docs.npmjs.com/cli/adduser) if you need to: `npm login`
-- Install wdio-cucumber-steps packages with: `npm install`
-- Run the tests to ensure all is still good: `npm test`
+- Install wdio-cucumber-steps packages with:  `yarn` OR `npm install`
+- Run the tests to ensure all is still good: `yarn test` OR `npm test`
 
 If all the tests passed then we are going to ship:
 - Tag the release in git. You can see existing tags with the command: `git tag`.
