@@ -41,6 +41,25 @@ module.exports = function () {
             }
         });
 
+        When(_r(`I scroll ${pageObject} element into view$`), async function async (element) {
+            /**
+             * Scrolls the element on which it's called into the visible area of the browser window
+             * @param {pageObject} element - String or "page"."object" to select the element
+             */
+            const locator = getPageObject(element);
+
+            try {
+                await browser.waitForExist(locator);
+                await browser.waitForPageToLoad();
+                return await browser.executeAsync(function (loc, done) {
+                    done(document.evaluate(loc, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null)
+                        .singleNodeValue.scrollIntoView());
+                }, locator);
+            } catch (err) {
+                throw new Error(err);
+            }
+        });
+
         When(_r(`I wait ${dictionaryObject} ms$`), async function async (timeObject) {
             /**
              * Wait for specified amount of milliseconds

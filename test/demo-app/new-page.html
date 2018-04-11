@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="styles/style.css">
         <link rel="stylesheet" href="styles/loaders.css">
         <script src="scripts/loaders.js"></script>
+        <script src="scripts/scroll.move.js"></script>
         <script>
             window.onload = function () {
                 const checkboxTest = document.getElementById("cbx-test");
@@ -34,14 +35,15 @@
     </head>
     <body>
         <div id="new-header">New page header</div>
-        <div id="new-page" style="height: 1600px;">New page</div>
+        <div id="new-page" style="height: 2600px;">New page</div>
         <div>
             <input type="checkbox" id="cbx-test" name="subscribe" value="news">
             <label for="cbx-test">Test checkbox</label>
         </div>
         <div id="block-text">Double-click before</div>
         <div id="button-launch" style="width: 220px; height: 20px; border: 1px solid black; text-align: center;">
-            Click to get text
+            Launch - Click to get text
         </div>
+        <div id="block-scroll">Scroll to this block</div>
     </body>
 </html>
