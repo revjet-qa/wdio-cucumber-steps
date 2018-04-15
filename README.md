@@ -8,7 +8,9 @@ Cucumber step definitions written with WebdriverIO for end-to-end tests
 
 ## Supported versions
 [Node.js](http://nodejs.org/):
-- 7.x
+- 7.6+
+- 8.x
+- 9.x
 
 [WebdriverIO](https://www.npmjs.com/package/webdriverio):
 - 4.x
@@ -41,6 +43,7 @@ You can create `steps.conf.js` configuration file in the root of your `test` fol
 - `const pages = {};` - object that contains pathes to all page objects used for tests
 - `const timeoutBeforeWaitForPageToLoad = 0;` - time in milliseconds to wait before running waitForPageToLoad could be
     used for the slow frameworks
+
 See the [example of steps.conf.js](https://github.com/revjet-qa/wdio-cucumber-steps/blob/master/test/steps.conf.js)
 
 ## Contributing

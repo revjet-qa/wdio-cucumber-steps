@@ -4,7 +4,7 @@
   "description": "Cucumber step definitions written with WebdriverIO",
   "main": "index.js",
   "engines": {
-    "node": ">=6.9.x"
+    "node": ">=7.6.x"
   },
   "scripts": {
     "lint": "./node_modules/eslint/bin/eslint.js -c .eslintrc.json src/ test/",
