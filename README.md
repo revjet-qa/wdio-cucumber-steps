@@ -46,6 +46,9 @@ You can create `steps.conf.js` configuration file in the root of your `test` fol
 
 See the [example of steps.conf.js](https://github.com/revjet-qa/wdio-cucumber-steps/blob/master/test/steps.conf.js)
 
+## Todo
+Please note that for now only XPath selectors are supported. CSS selectors support will be added in future.
+
 ## Contributing
 You are welcome to contribute - please see
 [CONTRIBUTING.md](https://github.com/revjet-qa/wdio-cucumber-steps/blob/master/CONTRIBUTING.md)
