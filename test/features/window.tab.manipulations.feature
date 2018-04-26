@@ -24,10 +24,9 @@ Feature: Window/tab
   Scenario: "I switch to first tab" steps should open first tab
     Given I open "http://localhost:9000"  
     When I open new window
-    When I switch to first tab
+    And I switch to first tab
     Then txtHeader from main page should be present
   
   Scenario: "I switch to last tab" steps should open last tab
     When I switch to last tab
     Then txtHeader from main page should not be present
-
