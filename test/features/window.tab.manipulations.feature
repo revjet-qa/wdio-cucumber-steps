@@ -15,7 +15,19 @@ Feature: Window/tab
     And I close current tab
 
   Scenario: "I close current tab" step should close recently opened tab
-    Given I open "http://localhost:9000"    
+    Given I open "http://localhost:9000"  
+    When I wait "5000" ms  
     When I open new window
     When I close current tab
     Then txtHeader from main page should be present
+
+  Scenario: "I switch to first tab" steps should open first tab
+    Given I open "http://localhost:9000"  
+    When I open new window
+    When I switch to first tab
+    Then txtHeader from main page should be present
+  
+  Scenario: "I switch to last tab" steps should open last tab
+    When I switch to last tab
+    Then txtHeader from main page should not be present
+
