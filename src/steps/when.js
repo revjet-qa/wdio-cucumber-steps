@@ -99,9 +99,7 @@ module.exports = function () {
 
         When(_r('I switch to first tab$'), async function async () {
             /**
-             * Open last tab
-             * @param {String} err - Any error message
-             * @param {Object} res - Any received Object with tabs list
+             * Switch to first tab
              */
             try {
                 const windowHandles = await browser.windowHandles();
@@ -115,9 +113,7 @@ module.exports = function () {
 
         When(_r('I switch to last tab$'), async function async () {
             /**
-             * Open last tab
-             * @param {String} err - Any error message
-             * @param {Object} res - Any received Object with tabs list
+             * Switch to last tab
              */
             try {
                 const windowHandles = await browser.windowHandles();
