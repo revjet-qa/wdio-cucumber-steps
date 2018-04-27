@@ -97,5 +97,33 @@ module.exports = function () {
             }
         });
 
+        When(_r('I switch to first tab$'), async function async () {
+            /**
+             * Switch to first tab
+             */
+            try {
+                const windowHandles = await browser.windowHandles();
+                const firstTabId = windowHandles.value[0];
+
+                return await browser.switchTab(firstTabId);
+            } catch (err) {
+                throw new Error(err);
+            }
+        });
+
+        When(_r('I switch to last tab$'), async function async () {
+            /**
+             * Switch to last tab
+             */
+            try {
+                const windowHandles = await browser.windowHandles();
+                const lastTabId = windowHandles.value[windowHandles.value.length - 1];
+
+                return await browser.switchTab(lastTabId);
+            } catch (err) {
+                throw new Error(err);
+            }
+        });
+
     });
 };
