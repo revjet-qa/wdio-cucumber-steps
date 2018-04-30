@@ -13,3 +13,7 @@ Feature: Match
   Scenario: "attribute should contain" step should verify that element's attribute contains certain value
     Given I open "http://localhost:9000/new-page.html"
     Then buttonLaunch from main page attribute "style" should contain "border: 1px solid black;"
+
+  Scenario: "attribute should not contain" step should verify that element's attribute does not contain certain value
+    Given I open "http://localhost:9000/new-page.html"
+    Then buttonLaunch from main page attribute "style" should not contain "border: 2px solid grey;"
