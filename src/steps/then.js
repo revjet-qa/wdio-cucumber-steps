@@ -73,5 +73,27 @@ module.exports = function () {
         });
         /* eslint-enable indent */
 
+        Then(_r(`^${pageObject} attribute ${dictionaryObject} should not contain ${dictionaryObject}$`),
+                async function async (element, attribute, phrase) { // eslint-disable-line indent
+            /**
+             * The phrase inside the element should match the specified phrase
+             * @param {pageObject} element - String or "page"."object" to select the element
+             * @param {dictionaryObject} attribute - String or "page"."object" with attribute that should not contain
+             * phrase
+             * @param {dictionaryObject} phrase - String or "page"."object" with phrase that should not be in attribute
+             */
+            /* eslint-disable indent */
+            const injection = `not(contains(@${getDictionaryObject.call(this, attribute)},
+                \"${getDictionaryObject.call(this, phrase)}\"))]`;
+            const locator = injectInto(getPageObject(element), injection);
+
+            try {
+                return await browser.waitForExist(locator);
+            } catch (err) {
+                throw new Error(err);
+            }
+        });
+        /* eslint-enable indent */
+
     });
 };
