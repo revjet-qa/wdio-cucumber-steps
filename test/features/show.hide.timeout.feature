@@ -20,10 +20,3 @@ Feature: Present / Not present
     Then I wait txtTimeout from values dictionary ms
     Then divTimeout from main page should not be present
     Then txtHeader from main page should be present
-
-  Scenario: Check that element has correct text
-    Given I open "http://localhost:9000"
-    Then txtHeader from main page should be present
-    Then divTimeout from main page should be present
-    Then txtHeader from main page has text "Header"
-    Then divTimeout from main page has text "This div disappears after 5000 ms"
