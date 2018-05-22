@@ -7,15 +7,28 @@ Feature: Window/tab
   As a developer
   I want to open/close window/tab and check that it works properly 
 
-  Scenario: Open new window step should open new empty tab
+  Scenario: "I open new window" step should open new empty tab
     Given I open "http://localhost:9000/new-page.html"
     Then txtNewHeader from main page should be present
     When I open new window
     Then div from main page should not be present
     And I close current tab
 
-  Scenario: Close current step should close recently opened tab
-    Given I open "http://localhost:9000"    
+  Scenario: "I close current tab" step should close recently opened tab
+    Given I open "http://localhost:9000"
     When I open new window
     When I close current tab
     Then txtHeader from main page should be present
+
+  Scenario: "I switch to first tab" steps should open first tab
+    Given I open "http://localhost:9000"  
+    When I open new window
+    And I switch to first tab
+    Then txtHeader from main page should be present
+  
+  Scenario: "I switch to last tab" steps should open last tab
+    Given I open "http://localhost:9000"  
+    When I open new window
+    And I switch to first tab
+    And I switch to last tab
+    Then txtHeader from main page should not be present

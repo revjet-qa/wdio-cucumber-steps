@@ -10,7 +10,7 @@ Feature: Present / Not present
     Then divTimeout from main page should be present
     And checkboxTestUnchecked from main page should not be present
 
-  Scenario: I wait step should wait for specified amount of milliseconds
+  Scenario: "I wait" step should wait for specified amount of milliseconds
     Given I open "http://localhost:9000"
     Then txtHeader from main page should be present
     Then divTimeout from main page should be present

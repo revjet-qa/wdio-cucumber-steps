@@ -18,6 +18,7 @@ const defaultIdGenerator = () => (new Date()).getTime();
 module.exports = function ({
     loaderSelectors = [], // <string>[] - array of xpath selectors, that will be used by finishedLoadingConditions.
     finishedLoadingConditions = defaultFinishedLoadingConditions, // <(loaderSelectors) => <boolean>>.
+    timeoutBeforeWaitForPageToLoad = 0, // <number> - time in milliseconds to wait before running waitForPageToLoad.
     pages = {}, // <{[key: string]: {[key: string]: <string>}}> - object, that contains "key" -> "Page object" pairs.
     defaultIdValue = '', // Default value of steps config Id.
     idGenerator = defaultIdGenerator, // <() => <string|number>> - function, that will return new generated id.
@@ -38,6 +39,7 @@ module.exports = function ({
     return {
         loaderSelectors,
         finishedLoadingConditions: finishedLoadingConditions.bind(this, loaderSelectors),
+        timeoutBeforeWaitForPageToLoad,
         pages,
         id: new Id(),
         objectsProcessor
