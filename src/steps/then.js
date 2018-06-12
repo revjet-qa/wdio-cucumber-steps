@@ -36,6 +36,19 @@ module.exports = function () {
             }
         });
 
+        Then(_r(`^${pageObject} has text ${dictionaryObject}$`), async function async (element, textPhrase) {
+            /**
+            * @param {pageObject} element - String or "page"."object" to select the element
+            * @type {String} or {DictionaryObject}
+             */
+            /* eslint-disable indent */
+            const locator = getPageObject(element);
+            const locatorText = await browser.getText(locator);
+            const textValue = getDictionaryObject.call(this, textPhrase);
+
+            expect(locatorText).to.be.equal(textValue);
+        });
+
         Then(_r(`^I wait for ${pageObject} to match ${dictionaryObject}$`), async function async (element, phrase) {
             /**
              * The phrase inside the element should match the specified phrase
@@ -51,6 +64,7 @@ module.exports = function () {
                 throw new Error(err);
             }
         });
+        /* eslint-disable indent */
 
         Then(_r(`^${pageObject} attribute ${dictionaryObject} should contain ${dictionaryObject}$`),
                 async function async (element, attribute, phrase) { // eslint-disable-line indent
