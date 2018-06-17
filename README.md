@@ -11,6 +11,7 @@ Cucumber step definitions written with WebdriverIO for end-to-end tests
 - 7.6+
 - 8.x
 - 9.x
+- 10.x
 
 [WebdriverIO](https://www.npmjs.com/package/webdriverio):
 - 4.x
